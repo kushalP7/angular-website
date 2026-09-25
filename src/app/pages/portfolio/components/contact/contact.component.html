@@ -1,0 +1,185 @@
+<section id="contact" class="contact bg-body">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="row text-center mb-5" appScrollReveal revealClass="reveal-active">
+      <div class="col-lg-8 mx-auto">
+        <span class="subtitle">Get In Touch</span>
+        <h2 class="section-title">Let's Work Together</h2>
+        <p class="text-secondary">
+          Have an exciting project, a role opportunity, or just want to chat about tech? Drop me a line!
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-5">
+      <!-- Left Column: Contact Cards & Map -->
+      <div class="col-lg-5 d-flex flex-column gap-4" appScrollReveal revealClass="reveal-active">
+        
+        <!-- Availability indicator -->
+        <div class="avail-card d-flex align-items-center gap-3 p-3 rounded-4 border border-color bg-surface">
+          <div class="pulse-indicator"></div>
+          <div>
+            <span class="text-muted small d-block">Current Status</span>
+            <strong class="text-primary">{{ portfolio.contactInfo.availability }}</strong>
+          </div>
+        </div>
+
+        <!-- Contact info boxes -->
+        <div class="d-flex flex-column gap-3">
+          <div class="info-item d-flex align-items-center gap-3 p-3 rounded-4 border border-color bg-surface">
+            <div class="info-icon d-flex align-items-center justify-content-center">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <span class="text-muted small d-block">Email</span>
+              <a [href]="'mailto:' + portfolio.contactInfo.email" class="info-link">{{ portfolio.contactInfo.email }}</a>
+            </div>
+          </div>
+
+          <div class="info-item d-flex align-items-center gap-3 p-3 rounded-4 border border-color bg-surface">
+            <div class="info-icon d-flex align-items-center justify-content-center">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div>
+              <span class="text-muted small d-block">Phone</span>
+              <a [href]="'tel:' + portfolio.contactInfo.phone" class="info-link">{{ portfolio.contactInfo.phone }}</a>
+            </div>
+          </div>
+
+          <div class="info-item d-flex align-items-center gap-3 p-3 rounded-4 border border-color bg-surface">
+            <div class="info-icon d-flex align-items-center justify-content-center">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <span class="text-muted small d-block">Location</span>
+              <span class="info-text">{{ portfolio.contactInfo.location }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Map Embed -->
+        @if (safeMapUrl) {
+          <div class="map-container rounded-4 overflow-hidden border border-color bg-surface">
+            <iframe [src]="safeMapUrl" 
+                    width="100%" 
+                    height="220" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Google Map showing approximate location">
+            </iframe>
+          </div>
+        }
+      </div>
+
+      <!-- Right Column: Interactive Form -->
+      <div class="col-lg-7" appScrollReveal revealClass="reveal-active" [delay]="150">
+        <div class="contact-form-container p-4 rounded-4 border border-color bg-surface">
+          
+          @if (formSubmitted()) {
+            <!-- Success State Overlay -->
+            <div class="form-success text-center py-5">
+              <div class="success-icon-box mx-auto mb-4 d-flex align-items-center justify-content-center">
+                <i class="fas fa-circle-check"></i>
+              </div>
+              <h3 class="h4 font-headings fw-bold mb-2">Message Sent Successfully!</h3>
+              <p class="text-secondary small mb-4">
+                Thank you for reaching out, {{ senderName() }}. I will review your message and respond within 24 hours.
+              </p>
+              <button (click)="resetForm()" class="btn-premium-outline">
+                <i class="fas fa-rotate-left"></i>
+                <span>Send Another Message</span>
+              </button>
+            </div>
+          } @else {
+            <!-- Contact Form -->
+            <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="name" class="form-label small fw-semibold">Your Name <span class="text-danger">*</span></label>
+                    <input type="text" 
+                           id="name" 
+                           name="name" 
+                           #nameInput="ngModel"
+                           [(ngModel)]="formData.name" 
+                           class="form-control bg-surface-dark border-color" 
+                           placeholder="John Doe" 
+                           required
+                           [class.is-invalid]="nameInput.invalid && nameInput.touched"
+                           [attr.aria-invalid]="nameInput.invalid && nameInput.touched" />
+                    <div class="invalid-feedback">Please enter your name.</div>
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="email" class="form-label small fw-semibold">Your Email <span class="text-danger">*</span></label>
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           #emailInput="ngModel"
+                           [(ngModel)]="formData.email" 
+                           class="form-control bg-surface-dark border-color" 
+                           placeholder="john.doe@example.com" 
+                           required
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+                           [class.is-invalid]="emailInput.invalid && emailInput.touched"
+                           [attr.aria-invalid]="emailInput.invalid && emailInput.touched" />
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="subject" class="form-label small fw-semibold">Subject <span class="text-danger">*</span></label>
+                <input type="text" 
+                       id="subject" 
+                       name="subject" 
+                       #subjectInput="ngModel"
+                       [(ngModel)]="formData.subject" 
+                       class="form-control bg-surface-dark border-color" 
+                       placeholder="Project Collaboration" 
+                       required
+                       [class.is-invalid]="subjectInput.invalid && subjectInput.touched"
+                       [attr.aria-invalid]="subjectInput.invalid && subjectInput.touched" />
+                <div class="invalid-feedback">Please specify a subject.</div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="message" class="form-label small fw-semibold">Your Message <span class="text-danger">*</span></label>
+                <textarea id="message" 
+                          name="message" 
+                          #messageInput="ngModel"
+                          [(ngModel)]="formData.message" 
+                          class="form-control bg-surface-dark border-color" 
+                          rows="6" 
+                          placeholder="Tell me about your project..." 
+                          required
+                          [class.is-invalid]="messageInput.invalid && messageInput.touched"
+                          [attr.aria-invalid]="messageInput.invalid && messageInput.touched"></textarea>
+                <div class="invalid-feedback">Please write your message.</div>
+              </div>
+
+              <button type="submit" 
+                      [disabled]="contactForm.invalid || isSubmitting()" 
+                      class="btn-premium w-100 justify-content-center border-0">
+                @if (isSubmitting()) {
+                  <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                  <span>Sending Message...</span>
+                } @else {
+                  <i class="fas fa-paper-plane me-2"></i>
+                  <span>Send Message</span>
+                }
+              </button>
+            </form>
+          }
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

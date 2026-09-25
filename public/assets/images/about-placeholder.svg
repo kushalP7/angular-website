@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="aboutGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#0f172a" rx="24" />
+  
+  <!-- Grid Background -->
+  <path d="M 0,50 L 500,50 M 0,100 L 500,100 M 0,150 L 500,150 M 0,200 L 500,200 M 0,250 L 500,250 M 0,300 L 500,300 M 0,350 L 500,350 M 0,400 L 500,400 M 0,450 L 500,450" fill="none" stroke="#1e293b" stroke-width="1" />
+  <path d="M 50,0 L 50,500 M 100,0 L 100,500 M 150,0 L 150,500 M 200,0 L 200,500 M 250,0 L 250,500 M 300,0 L 300,500 M 350,0 L 350,500 M 400,0 L 400,500 M 450,0 L 450,500" fill="none" stroke="#1e293b" stroke-width="1" />
+  
+  <!-- Abstract Design: Code editor mockup -->
+  <rect x="50" y="80" width="400" height="280" rx="12" fill="#1e293b" stroke="url(#aboutGrad)" stroke-width="2" />
+  <!-- Title bar -->
+  <path d="M 50,110 L 450,110" stroke="url(#aboutGrad)" stroke-width="2" />
+  <!-- Window buttons -->
+  <circle cx="75" cy="95" r="6" fill="#ef4444" />
+  <circle cx="95" cy="95" r="6" fill="#eab308" />
+  <circle cx="115" cy="95" r="6" fill="#22c55e" />
+  
+  <!-- Lines of "code" -->
+  <rect x="80" y="135" width="120" height="12" rx="4" fill="url(#aboutGrad)" />
+  <rect x="110" y="160" width="220" height="12" rx="4" fill="#64748b" />
+  <rect x="110" y="185" width="180" height="12" rx="4" fill="#64748b" />
+  <rect x="140" y="210" width="240" height="12" rx="4" fill="url(#accentGrad)" />
+  <rect x="140" y="235" width="150" height="12" rx="4" fill="url(#aboutGrad)" />
+  <rect x="110" y="260" width="80" height="12" rx="4" fill="#64748b" />
+  <rect x="80" y="285" width="60" height="12" rx="4" fill="url(#aboutGrad)" />
+  
+  <text x="250" y="410" fill="#ffffff" font-family="'Outfit', 'Inter', sans-serif" font-size="18" font-weight="bold" text-anchor="middle">CREATIVE FRONTEND ARCHITECT</text>
+  <text x="250" y="440" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="14" text-anchor="middle">REPLACE WITH YOUR ABOUT IMAGE</text>
+</svg>

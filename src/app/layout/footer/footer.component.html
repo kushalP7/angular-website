@@ -1,0 +1,66 @@
+<footer class="footer py-5 border-top border-color">
+  <div class="container">
+    <div class="row align-items-center gy-4">
+      <!-- Left: Brand / Copyright -->
+      <div class="col-md-4 text-center text-md-start">
+        <h5 class="logo-text mb-2">{{ portfolio.name }}<span class="dot">.</span></h5>
+        <p class="text-secondary small mb-0">
+          &copy; {{ currentYear }} All rights reserved. Crafted with Angular 19.
+        </p>
+      </div>
+      
+      <!-- Middle: Social Links -->
+      <div class="col-md-4 text-center">
+        <div class="social-icons d-flex justify-content-center gap-3">
+          @for (social of portfolio.socialLinks; track social.platform) {
+            <a [href]="social.url" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="social-link" 
+               [attr.aria-label]="social.platform">
+              <i [class]="social.icon"></i>
+            </a>
+          }
+        </div>
+      </div>
+      
+      <!-- Right: Quick Actions (Theme & Back to Top) -->
+      <div class="col-md-4 text-center text-md-end">
+        <div class="d-inline-flex align-items-center gap-3 justify-content-center justify-content-md-end">
+          <!-- Inline Theme Toggle -->
+          <div class="theme-picker d-flex gap-1 p-1 bg-surface border border-color rounded-pill">
+            <button (click)="setTheme('light')" 
+                    [class.active]="themeService.themeMode() === 'light'"
+                    class="btn-theme-selector" 
+                    aria-label="Light theme" 
+                    title="Light Theme">
+              <i class="fas fa-sun"></i>
+            </button>
+            <button (click)="setTheme('dark')" 
+                    [class.active]="themeService.themeMode() === 'dark'"
+                    class="btn-theme-selector" 
+                    aria-label="Dark theme" 
+                    title="Dark Theme">
+              <i class="fas fa-moon"></i>
+            </button>
+            <button (click)="setTheme('system')" 
+                    [class.active]="themeService.themeMode() === 'system'"
+                    class="btn-theme-selector" 
+                    aria-label="System theme" 
+                    title="System Theme">
+              <i class="fas fa-desktop"></i>
+            </button>
+          </div>
+
+          <!-- Scroll to Top -->
+          <button (click)="scrollToTop()" 
+                  class="btn-back-to-top" 
+                  aria-label="Scroll to top" 
+                  title="Scroll to Top">
+            <i class="fas fa-arrow-up"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

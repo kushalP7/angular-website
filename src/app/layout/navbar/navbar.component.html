@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg fixed-top transition-all" 
+     [ngClass]="{ 'navbar-scrolled shadow-md': isScrolled(), 'navbar-top': !isScrolled() }">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" href="#hero" (click)="scrollToSection($event, 'hero')">
+      <span class="logo-text">KP<span class="dot">.</span></span>
+    </a>
+
+    <!-- Hamburger Toggle (Mobile) -->
+    <button class="navbar-toggler border-0" 
+            type="button" 
+            (click)="toggleMenu()"
+            [attr.aria-expanded]="isMenuOpen()" 
+            aria-label="Toggle navigation">
+      <span class="hamburger-icon" [ngClass]="{ 'open': isMenuOpen() }">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse justify-content-end" [ngClass]="{ 'show': isMenuOpen() }">
+      <ul class="navbar-nav align-items-center gap-3 py-3 py-lg-0">
+        @for (item of navItems; track item.id) {
+          <li class="nav-item">
+            <a class="nav-link font-headings text-capitalize" 
+               [class.active]="activeSection() === item.id"
+               [href]="'#' + item.id"
+               (click)="scrollToSection($event, item.id)">
+              {{ item.label }}
+              <span class="animated-underline"></span>
+            </a>
+          </li>
+        }
+        
+        <!-- Theme Selector -->
+        <li class="nav-item ms-lg-2">
+          <button class="theme-toggle-btn d-flex align-items-center justify-content-center" 
+                  (click)="toggleTheme()"
+                  [attr.aria-label]="'Toggle theme current mode: ' + themeService.themeMode()"
+                  title="Toggle theme (Light -> Dark -> System)">
+            @if (themeService.themeMode() === 'light') {
+              <i class="fas fa-sun text-warning fs-5"></i>
+            } @else if (themeService.themeMode() === 'dark') {
+              <i class="fas fa-moon text-indigo fs-5"></i>
+            } @else {
+              <i class="fas fa-desktop text-muted fs-5"></i>
+            }
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

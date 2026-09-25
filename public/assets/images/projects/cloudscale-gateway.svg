@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#1f2937" />
+    </linearGradient>
+    <linearGradient id="accent3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff9900" />
+      <stop offset="100%" stop-color="#ffb74d" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g3)" rx="16" />
+  
+  <!-- Cloud Elements -->
+  <path d="M 400,100 C 350,100 320,130 320,170 C 300,170 280,190 280,215 C 280,240 300,260 325,260 L 475,260 C 500,260 520,240 520,215 C 520,195 505,175 485,171 C 485,130 450,100 400,100 Z" fill="url(#accent3)" opacity="0.8" />
+  
+  <!-- Network Nodes -->
+  <circle cx="200" cy="350" r="15" fill="#4b5563" />
+  <circle cx="400" cy="350" r="15" fill="#4b5563" />
+  <circle cx="600" cy="350" r="15" fill="#4b5563" />
+  
+  <!-- Connections -->
+  <path d="M 400,260 L 200,335 M 400,260 L 400,335 M 400,260 L 600,335" stroke="#9ca3af" stroke-width="3" stroke-dasharray="8,8" />
+  
+  <text x="400" y="380" fill="#ffffff" font-family="'Outfit', 'Inter', sans-serif" font-size="22" font-weight="bold" text-anchor="middle">CLOUDSCALE API GATEWAY</text>
+  <text x="400" y="410" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="14" text-anchor="middle">AWS SERVERLESS &amp; API MANAGEMENT</text>
+  <text x="400" y="440" fill="#6b7280" font-family="'Inter', sans-serif" font-size="12" text-anchor="middle">REPLACE WITH ARCHITECTURE OR SYSTEM IMAGE</text>
+</svg>

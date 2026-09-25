@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="accent4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g4)" rx="16" />
+  
+  <!-- Interactive Mobile Device Mockups -->
+  <rect x="310" y="50" width="180" height="340" rx="24" fill="#1e293b" stroke="#334155" stroke-width="4" />
+  <rect x="320" y="80" width="160" height="280" rx="8" fill="#0f172a" />
+  <circle cx="400" cy="65" r="5" fill="#475569" />
+  
+  <!-- Content cards in screen -->
+  <rect x="330" y="90" width="140" height="70" rx="6" fill="#1e293b" />
+  <circle cx="350" cy="110" r="10" fill="url(#accent4)" />
+  <rect x="370" y="105" width="85" height="10" rx="2" fill="#e2e8f0" />
+  <rect x="335" y="130" width="130" height="6" rx="2" fill="#94a3b8" />
+  <rect x="335" y="142" width="100" height="6" rx="2" fill="#94a3b8" />
+  
+  <rect x="330" y="175" width="140" height="70" rx="6" fill="#1e293b" />
+  <circle cx="350" cy="195" r="10" fill="#4b5563" />
+  <rect x="370" y="190" width="85" height="10" rx="2" fill="#e2e8f0" />
+  <rect x="335" y="215" width="130" height="6" rx="2" fill="#94a3b8" />
+  
+  <text x="400" y="420" fill="#ffffff" font-family="'Outfit', 'Inter', sans-serif" font-size="22" font-weight="bold" text-anchor="middle">AURA SOCIAL NETWORK</text>
+  <text x="400" y="445" fill="#a855f7" font-family="'Inter', sans-serif" font-size="14" text-anchor="middle">P2P ENCRYPTED WEBRTC &amp; WEBSOCKETS</text>
+  <text x="400" y="470" fill="#64748b" font-family="'Inter', sans-serif" font-size="12" text-anchor="middle">REPLACE WITH PLATFORM SCREENSHOT</text>
+</svg>

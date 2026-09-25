@@ -1,0 +1,95 @@
+<section id="projects" class="projects bg-surface-dark">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="row text-center mb-5" appScrollReveal revealClass="reveal-active">
+      <div class="col-lg-8 mx-auto">
+        <span class="subtitle">Portfolio</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="text-secondary">
+          A curated selection of applications I have built, ranging from enterprise dashboards to serverless infrastructures.
+        </p>
+      </div>
+    </div>
+
+    <!-- Filter Controls -->
+    <div class="row mb-5" appScrollReveal revealClass="reveal-active" [delay]="100">
+      <div class="col-12">
+        <div class="filter-wrapper d-flex flex-wrap justify-content-center gap-2 p-2 rounded-pill bg-surface border border-color mx-auto">
+          @for (cat of categories(); track cat) {
+            <button (click)="selectCategory(cat)"
+                    [class.active]="selectedCategory() === cat"
+                    class="btn-filter font-headings rounded-pill px-4 py-2 border-0">
+              {{ cat }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="row g-4" [@listAnimation]="filteredProjects().length">
+      @for (project of filteredProjects(); track project.title) {
+        <div class="col-md-6 col-lg-4 d-flex">
+          <div class="project-card d-flex flex-column rounded-4 border border-color bg-surface overflow-hidden w-100">
+            
+            <!-- Card Image & Overlay -->
+            <div class="card-image-box position-relative overflow-hidden">
+              <div class="image-skeleton" [class.d-none]="isLoaded(project.title)">
+                <div class="spinner-border text-primary" role="status"></div>
+              </div>
+              <img [src]="project.imageUrl" 
+                   class="project-img w-100" 
+                   [class.loaded]="isLoaded(project.title)"
+                   (load)="onImageLoad(project.title)"
+                   loading="lazy" 
+                   [alt]="project.title + ' preview image'" />
+              
+              <span class="category-badge badge rounded-pill">{{ project.category }}</span>
+            </div>
+
+            <!-- Card Body -->
+            <div class="card-body-content p-4 d-flex flex-column flex-grow-1">
+              <h3 class="h5 mb-2 font-headings project-title">{{ project.title }}</h3>
+              <p class="text-secondary small mb-4 flex-grow-1">{{ project.description }}</p>
+              
+              <!-- Features preview list -->
+              <ul class="features-list ps-3 mb-4 d-none d-sm-block">
+                @for (feat of project.features.slice(0, 2); track feat) {
+                  <li class="text-muted small mb-1">{{ feat }}</li>
+                }
+              </ul>
+
+              <!-- Tech Tags -->
+              <div class="tech-tags-box d-flex flex-wrap gap-2 mb-4">
+                @for (tech of project.techStack; track tech) {
+                  <span class="tech-pill badge rounded-pill">{{ tech }}</span>
+                }
+              </div>
+
+              <!-- Actions -->
+              <div class="d-flex gap-3 mt-auto">
+                <a [href]="project.liveUrl" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn-premium-action btn-premium-action--live flex-grow-1 text-center"
+                   [attr.aria-label]="'View live demo of ' + project.title">
+                  <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                </a>
+                <a [href]="project.githubUrl" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn-premium-action btn-premium-action--code"
+                   [attr.aria-label]="'View source code of ' + project.title">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

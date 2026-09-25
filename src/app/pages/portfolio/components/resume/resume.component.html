@@ -1,0 +1,148 @@
+<section id="resume" class="resume bg-surface-dark">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="row text-center mb-5" appScrollReveal revealClass="reveal-active">
+      <div class="col-lg-8 mx-auto">
+        <span class="subtitle">Qualifications</span>
+        <h2 class="section-title">Resume &amp; Credentials</h2>
+        <p class="text-secondary">
+          Review my certifications, technical accomplishments, and download my full resume.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-5 align-items-stretch">
+      <!-- Left Column: Resume Preview Card -->
+      <div class="col-lg-5" appScrollReveal revealClass="reveal-active">
+        <div class="resume-preview-card h-100 p-4 rounded-4 border border-color bg-surface d-flex flex-column justify-content-between position-relative">
+          
+          <!-- Download Overlay on Hover -->
+          <div class="preview-overlay d-flex flex-column align-items-center justify-content-center">
+            <a [href]="portfolio.resumeUrl" 
+               target="_blank" 
+               class="btn-premium mb-2"
+               download="Kushal_Prajapati_Resume.pdf">
+              <i class="fas fa-file-pdf"></i>
+              <span>Download Full PDF</span>
+            </a>
+            <span class="text-white small">Opens in new tab</span>
+          </div>
+
+          <!-- Miniature Resume Layout -->
+          <div class="mini-resume-content">
+            <!-- Header -->
+            <div class="border-bottom border-color pb-3 mb-3 d-flex justify-content-between align-items-center">
+              <div>
+                <h3 class="h6 font-headings fw-bold mb-1 text-primary">{{ portfolio.name }}</h3>
+                <span class="mini-title text-secondary">{{ portfolio.titles[0] }}</span>
+              </div>
+              <i class="fas fa-file-invoice fs-4 text-muted"></i>
+            </div>
+
+            <!-- Info summary -->
+            <div class="mb-3 small text-secondary">
+              <span class="d-block mb-1"><i class="fas fa-envelope me-2"></i>{{ portfolio.contactInfo.email }}</span>
+              <span class="d-block"><i class="fas fa-location-dot me-2"></i>{{ portfolio.contactInfo.location }}</span>
+            </div>
+
+            <!-- Section: Summary -->
+            <div class="mini-section mb-3">
+              <h4 class="mini-heading text-uppercase text-muted">Executive Summary</h4>
+              <p class="mini-p text-secondary mb-0">
+                SaaS-focused Frontend Architect with 8+ years experience. Expert in Angular, TypeScript, RxJS, and performance tuning. Led developer groups to build multi-tenant systems.
+              </p>
+            </div>
+
+            <!-- Section: Skills Preview -->
+            <div class="mini-section mb-3">
+              <h4 class="mini-heading text-uppercase text-muted">Core Competencies</h4>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="mini-tag">Angular</span>
+                <span class="mini-tag">TypeScript</span>
+                <span class="mini-tag">RxJS &amp; Signals</span>
+                <span class="mini-tag">Architectures</span>
+                <span class="mini-tag">SCSS / Bootstrap</span>
+                <span class="mini-tag">AWS</span>
+              </div>
+            </div>
+
+            <!-- Section: Experience Summary -->
+            <div class="mini-section">
+              <h4 class="mini-heading text-uppercase text-muted">Recent Experience</h4>
+              <div class="mini-exp mb-2">
+                <strong class="text-primary small d-block">Senior Frontend Architect &bull; TechNova</strong>
+                <span class="text-muted mini-text">2021 - Present | Built Angular 18/19 Dashboards</span>
+              </div>
+              <div class="mini-exp">
+                <strong class="text-primary small d-block">Lead Frontend Developer &bull; Innovate Digital</strong>
+                <span class="text-muted mini-text">2019 - 2021 | Managed Angular Migrations</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Button at the bottom for quick access -->
+          <div class="border-top border-color pt-3 mt-4 text-center">
+            <a [href]="portfolio.resumeUrl" 
+               target="_blank" 
+               class="btn-premium-outline w-100 justify-content-center"
+               download="Kushal_Prajapati_Resume.pdf">
+              <i class="fas fa-download"></i>
+              <span>Download Resume (PDF)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Certifications & Achievements -->
+      <div class="col-lg-7 d-flex flex-column gap-4" appScrollReveal revealClass="reveal-active" [delay]="150">
+        
+        <!-- Certifications Card -->
+        <div class="certifications-card p-4 rounded-4 border border-color bg-surface flex-grow-1">
+          <h3 class="h5 mb-4 font-headings text-uppercase text-primary letter-spacing-1">
+            <i class="fas fa-award me-2"></i>Certifications
+          </h3>
+          
+          <div class="d-flex flex-column gap-3">
+            @for (cert of portfolio.certifications; track cert.name) {
+              <div class="cert-item p-3 rounded-3 border border-color bg-surface-dark d-flex align-items-center justify-content-between">
+                <div>
+                  <h4 class="h6 mb-1 fw-bold">{{ cert.name }}</h4>
+                  <span class="text-secondary small">{{ cert.issuer }} &bull; {{ cert.date }}</span>
+                </div>
+                @if (cert.url && cert.url !== '#') {
+                  <a [href]="cert.url" target="_blank" class="cert-verify-link text-primary small font-headings" aria-label="Verify certification">
+                    Verify <i class="fas fa-arrow-up-right-from-square ms-1"></i>
+                  </a>
+                }
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Achievements Card -->
+        <div class="achievements-card p-4 rounded-4 border border-color bg-surface flex-grow-1">
+          <h3 class="h5 mb-4 font-headings text-uppercase text-primary letter-spacing-1">
+            <i class="fas fa-trophy me-2"></i>Key Achievements
+          </h3>
+          
+          <div class="d-flex flex-column gap-3">
+            @for (ach of portfolio.achievements; track ach.name) {
+              <div class="ach-item d-flex gap-3">
+                <div class="ach-icon-box d-flex align-items-center justify-content-center flex-shrink-0">
+                  <i class="fas fa-circle-check text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="h6 mb-1 fw-bold text-primary">{{ ach.name }}</h4>
+                  <p class="text-secondary small mb-0">{{ ach.details }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

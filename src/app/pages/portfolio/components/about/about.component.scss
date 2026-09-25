@@ -1,0 +1,140 @@
+@import "../../../../../scss/variables";
+@import "../../../../../scss/mixins";
+
+.about {
+  background-color: var(--bg-body);
+  position: relative;
+}
+
+.about-image-wrapper {
+  position: relative;
+  padding: 15px;
+  
+  .image-border-decor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    border-bottom: 4px solid var(--color-primary);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 0 0 0 24px;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .about-img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    transition: var(--transition-slow);
+    
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.bio-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.fact-card {
+  transition: var(--transition-smooth);
+  background-color: var(--bg-surface) !important;
+  
+  &:hover {
+    border-color: var(--color-primary) !important;
+    transform: translateY(-2px);
+  }
+}
+
+.fact-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--gradient-dark-only);
+  color: var(--color-primary);
+  font-size: 1.2rem;
+}
+
+.fact-label {
+  font-weight: 500;
+}
+
+.fact-value {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+// Education Timeline
+.edu-timeline {
+  margin-left: 10px;
+}
+
+.edu-item {
+  border-color: var(--border-color) !important;
+  
+  &:last-child {
+    border-left: 2px solid transparent !important; // Fade out timeline at the end
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -6.5px;
+  top: 4px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  box-shadow: 0 0 8px var(--color-primary);
+}
+
+.edu-title {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.edu-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--border-color);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+// Stats Card
+.bg-surface-dark {
+  background-color: var(--bg-surface);
+  transition: var(--transition-smooth);
+  
+  &:hover {
+    border-color: var(--color-primary) !important;
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.stat-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gradient-dark-only);
+  color: var(--color-primary);
+  font-size: 1.3rem;
+}
+
+.stat-value {
+  font-weight: 800;
+  @include gradient-text(var(--gradient-primary));
+}
+
+.stat-label {
+  font-weight: 600;
+}

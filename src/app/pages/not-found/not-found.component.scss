@@ -1,0 +1,21 @@
+@import "../../../scss/variables";
+@import "../../../scss/mixins";
+
+.not-found-layout {
+  background-color: var(--bg-body);
+  position: relative;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 6.5rem;
+  @include gradient-text(var(--gradient-primary));
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.max-width-card {
+  z-index: 2;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+}

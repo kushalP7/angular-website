@@ -1,0 +1,84 @@
+<section id="about" class="about">
+  <div class="container">
+    <div class="row gy-5 align-items-center">
+      
+      <!-- Left: About Image & Interactive Stats -->
+      <div class="col-lg-5" appScrollReveal revealClass="reveal-active">
+        <div class="about-image-wrapper">
+          <div class="image-border-decor"></div>
+          <img [src]="portfolio.aboutImage" 
+               class="about-img img-fluid rounded-4 shadow-lg" 
+               alt="Kushal Prajapati creative background mockup" />
+        </div>
+      </div>
+      
+      <!-- Right: Bio & Facts -->
+      <div class="col-lg-7" appScrollReveal revealClass="reveal-active" [delay]="150">
+        <span class="subtitle">About Me</span>
+        <h2 class="section-title">My Professional Journey</h2>
+        
+        <p class="bio-text text-secondary mb-4">
+          {{ portfolio.bio }}
+        </p>
+        
+        <!-- Quick Facts Grid -->
+        <div class="row g-3 mb-5">
+          @for (fact of portfolio.facts; track fact.label) {
+            <div class="col-sm-6">
+              <div class="fact-card d-flex align-items-center gap-3 p-3 rounded-3 border border-color bg-surface">
+                <div class="fact-icon-box d-flex align-items-center justify-content-center">
+                  <i [class]="fact.icon"></i>
+                </div>
+                <div>
+                  <span class="fact-label text-muted small d-block">{{ fact.label }}</span>
+                  <strong class="fact-value">{{ fact.value }}</strong>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+        
+        <!-- Education / Timeline Preview -->
+        <div class="education-section">
+          <h3 class="h5 mb-4 text-uppercase letter-spacing-1 text-primary">
+            <i class="fas fa-graduation-cap me-2"></i>Education
+          </h3>
+          <div class="edu-timeline">
+            @for (edu of portfolio.education; track edu.degree) {
+              <div class="edu-item mb-4 pb-2 border-start border-color ps-4 position-relative">
+                <span class="timeline-dot"></span>
+                <div class="d-flex flex-wrap justify-content-between align-items-center mb-1">
+                  <h4 class="edu-title h6 mb-0">{{ edu.degree }}</h4>
+                  <span class="edu-date badge rounded-pill">{{ edu.duration }}</span>
+                </div>
+                <span class="edu-inst text-secondary small d-block mb-2">{{ edu.institution }} &bull; {{ edu.location }}</span>
+                @if (edu.description) {
+                  <p class="edu-desc text-muted small mb-0">{{ edu.description }}</p>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animated Stats Counter Row -->
+    <div class="row mt-5 pt-5 g-4 justify-content-center">
+      @for (stat of stats; track stat.label) {
+        <div class="col-6 col-md-3" appScrollReveal revealClass="reveal-active" [delay]="$index * 100">
+          <div class="stat-card text-center p-4 rounded-4 border border-color bg-surface-dark">
+            <div class="stat-icon-wrapper mx-auto mb-3 d-flex align-items-center justify-content-center">
+              <i [class]="stat.icon"></i>
+            </div>
+            <h3 class="stat-value display-5 font-headings mb-1">
+              {{ stat.current() }}{{ stat.suffix }}
+            </h3>
+            <p class="stat-label text-muted small text-uppercase letter-spacing-1 mb-0">
+              {{ stat.label }}
+            </p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

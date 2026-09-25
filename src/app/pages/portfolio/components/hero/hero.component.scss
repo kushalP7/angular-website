@@ -1,0 +1,186 @@
+@import "../../../../../scss/variables";
+@import "../../../../../scss/mixins";
+
+.hero {
+  min-height: 100vh;
+  padding-top: 130px;
+  padding-bottom: 80px;
+  background-color: var(--bg-body);
+  position: relative;
+}
+
+.relative-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-name {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  
+  .gradient-text {
+    @include gradient-text(var(--gradient-primary));
+  }
+
+  @media (max-width: 767.98px) {
+    font-size: 2.8rem;
+  }
+}
+
+.hero-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  height: 40px; // Prevent layout shifts during typing
+  color: var(--text-primary);
+  
+  .typed-text {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 767.98px) {
+    font-size: 1.4rem;
+    height: 35px;
+  }
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  max-width: 540px;
+  line-height: 1.6;
+}
+
+.social-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+
+  &:hover {
+    background: var(--gradient-primary);
+    color: var(--text-light);
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+// Profile Image Styling
+.profile-image-wrapper {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  
+  @media (min-width: 768px) {
+    width: 380px;
+    height: 380px;
+  }
+
+  @media (min-width: 992px) {
+    width: 420px;
+    height: 420px;
+  }
+}
+
+.profile-glow {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background: var(--gradient-primary);
+  filter: blur(20px);
+  opacity: 0.45;
+  z-index: 1;
+  animation: morph-glow 8s ease-in-out infinite alternate;
+}
+
+.profile-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  border: 4px solid var(--bg-surface);
+  background-color: var(--bg-surface);
+  box-shadow: var(--shadow-lg);
+  animation: morph-glow 8s ease-in-out infinite alternate;
+}
+
+@keyframes morph-glow {
+  0% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  50% {
+    border-radius: 50% 50% 30% 70% / 50% 60% 40% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 60% 40% / 40% 50% 50% 60%;
+  }
+}
+
+// Floating Particle Icons
+.floating-icons-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle-icon {
+  position: absolute;
+  font-size: 1.8rem;
+  opacity: 0.15;
+  animation: float-icon 6s infinite ease-in-out alternate;
+  color: var(--color-primary);
+
+  &--1 {
+    top: 25%;
+    left: 8%;
+    animation-delay: 0s;
+  }
+  &--2 {
+    top: 60%;
+    left: 45%;
+    animation-delay: 1.5s;
+    color: var(--color-secondary);
+  }
+  &--3 {
+    top: 20%;
+    right: 15%;
+    animation-delay: 3s;
+    color: var(--color-accent);
+  }
+  &--4 {
+    bottom: 15%;
+    left: 15%;
+    animation-delay: 4.5s;
+  }
+  &--5 {
+    top: 50%;
+    right: 8%;
+    animation-delay: 2s;
+    color: var(--color-secondary);
+  }
+}
+
+@keyframes float-icon {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-25px) rotate(15deg);
+  }
+}

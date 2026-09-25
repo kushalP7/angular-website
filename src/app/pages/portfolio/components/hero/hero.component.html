@@ -1,0 +1,75 @@
+<section id="hero" class="hero d-flex align-items-center">
+  <!-- Ambient Blur Blobs -->
+  <div class="ambient-blur-container">
+    <div class="ambient-blob ambient-blob--1"></div>
+    <div class="ambient-blob ambient-blob--2"></div>
+    <div class="ambient-blob ambient-blob--3"></div>
+  </div>
+
+  <!-- Floating particle elements -->
+  <div class="floating-icons-container d-none d-md-block">
+    <i class="fab fa-angular particle-icon particle-icon--1"></i>
+    <i class="fab fa-js particle-icon particle-icon--2"></i>
+    <i class="fab fa-css3-alt particle-icon particle-icon--3"></i>
+    <i class="fas fa-code particle-icon particle-icon--4"></i>
+    <i class="fab fa-aws particle-icon particle-icon--5"></i>
+  </div>
+
+  <div class="container relative-content">
+    <div class="row align-items-center gy-5">
+      <!-- Left: Text content -->
+      <div class="col-lg-6 text-center text-lg-start" [@slideUp]>
+        <span class="subtitle mb-3 d-inline-block">Welcome to my universe</span>
+        <h1 class="hero-name mb-2">
+          Hi, I'm <span class="gradient-text">{{ portfolio.name }}</span>
+        </h1>
+        
+        <!-- Typing Animation Container -->
+        <h2 class="hero-title mb-4">
+          I am a <span class="typed-text">{{ typedText() }}</span><span class="typing-cursor">|</span>
+        </h2>
+
+        <p class="hero-description text-secondary mb-5">
+          {{ portfolio.introText }}
+        </p>
+
+        <div class="hero-actions d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
+          <a href="#contact" class="btn-premium" (click)="scrollToSection($event, 'contact')">
+            <span>Hire Me</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a [href]="portfolio.resumeUrl" target="_blank" class="btn-premium-outline">
+            <i class="fas fa-download"></i>
+            <span>Download Resume</span>
+          </a>
+        </div>
+
+        <!-- Social Links -->
+        <div class="hero-socials mt-5">
+          <span class="text-muted small text-uppercase letter-spacing-1 d-block mb-3">Connect with me</span>
+          <div class="d-flex justify-content-center justify-content-lg-start gap-3">
+            @for (social of portfolio.socialLinks; track social.platform) {
+              <a [href]="social.url" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="social-icon-btn" 
+                 [attr.aria-label]="social.platform">
+                <i [class]="social.icon"></i>
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Profile Image -->
+      <div class="col-lg-6 d-flex justify-content-center" [@zoomIn]>
+        <div class="profile-image-wrapper">
+          <div class="profile-glow"></div>
+          <img [src]="portfolio.profileImage" 
+               class="profile-img img-fluid" 
+               alt="Kushal Prajapati Avatar/Profile" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

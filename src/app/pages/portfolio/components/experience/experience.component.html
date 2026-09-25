@@ -1,0 +1,65 @@
+<section id="experience" class="experience bg-body">
+  <div class="container">
+    <div class="row text-center mb-5" appScrollReveal revealClass="reveal-active">
+      <div class="col-lg-8 mx-auto">
+        <span class="subtitle">History</span>
+        <h2 class="section-title">Work Experience</h2>
+        <p class="text-secondary">
+          A timeline of my professional career, technical leadership roles, and major engineering contributions.
+        </p>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="experience-timeline">
+      @for (exp of portfolio.experienceList; track exp.company + exp.designation) {
+        <!-- Timeline Item -->
+        <div class="timeline-item d-flex flex-column flex-md-row" 
+             [class.timeline-item--left]="$index % 2 === 0"
+             [class.timeline-item--right]="$index % 2 !== 0"
+             appScrollReveal 
+             revealClass="reveal-active" 
+             [delay]="$index * 150">
+          
+          <!-- Timeline node dot -->
+          <div class="timeline-badge-wrapper">
+            <div class="timeline-badge d-flex align-items-center justify-content-center">
+              <i class="fas fa-briefcase"></i>
+            </div>
+          </div>
+
+          <!-- Timeline content card -->
+          <div class="timeline-card-wrapper">
+            <div class="timeline-card p-4 rounded-4 border border-color bg-surface shadow-sm">
+              <!-- Header -->
+              <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+                <div>
+                  <h3 class="h5 mb-1 job-title">{{ exp.designation }}</h3>
+                  <h4 class="h6 mb-0 company-name text-primary d-inline-flex align-items-center gap-2">
+                    {{ exp.company }}
+                    <span class="location-tag text-muted small"><i class="fas fa-location-dot me-1"></i>{{ exp.location }}</span>
+                  </h4>
+                </div>
+                <span class="duration-badge badge rounded-pill">{{ exp.duration }}</span>
+              </div>
+
+              <!-- Responsibilities -->
+              <ul class="responsibilities-list ps-3 mb-4">
+                @for (resp of exp.responsibilities; track resp) {
+                  <li class="text-secondary small mb-2">{{ resp }}</li>
+                }
+              </ul>
+
+              <!-- Tech stack tags -->
+              <div class="tech-stack-container d-flex flex-wrap gap-2">
+                @for (tech of exp.techStack; track tech) {
+                  <span class="tech-tag badge rounded-pill">{{ tech }}</span>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
